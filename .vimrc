@@ -570,6 +570,33 @@ nnoremap <silent> <Leader>wr :silent setlocal invwrap wrap?<CR>
 
 " }}}
 " Functions {{{
+" Chdir to the file directory {{{
+
+" Change the current working directory to the directory of the current buffer.
+function! s:chdir_file_dir() abort
+  if &filetype ==# 'netrw'
+    if !exists('b:netrw_curdir')
+      echoerr 'The variable ''b:netrw_curdir'' is not declared.'
+      return
+    endif
+
+    let l:cwd = fnameescape(b:netrw_curdir)
+  else
+    let l:cwd = expand('%:p:h')
+  endif
+
+  if !isdirectory(l:cwd)
+    echoerr printf('The directory ''%s'' does not exist.', l:cwd)
+    return
+  endif
+
+  execute 'lcd ' . l:cwd
+  pwd
+endfunction
+
+nnoremap ,cd :call <SID>chdir_file_dir()<CR>
+
+" }}}
 " Clipboard {{{
 
 "if exists('+clipboard')
@@ -865,7 +892,5 @@ endif
 
 
 " }}}
-
-" End: Post config }}}
 
 " vim:foldmethod=marker:syntax=vim

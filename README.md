@@ -27,9 +27,6 @@ Insert mode:
 
 ### Files:
 
-Normal mode:
-- Edit the directory where the current file or directory is: `-`
-
 Grep:
 - Run grep (or rg, if available): `<leader>gr` (normal mode)
 
