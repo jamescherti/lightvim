@@ -454,7 +454,7 @@ set infercase
 " set iskeyword+=-
 
 " Make Ctrl-X-F work with "=/"
-" set isfname-==
+set isfname-==
 
 " }}}
 
@@ -564,14 +564,19 @@ if has('autocmd')
 endif
 
 " end autocmd }}}
+" Key bindings {{{
+
+nnoremap <silent> <Leader>wr :silent setlocal invwrap wrap?<CR>
+
+" }}}
 " Functions {{{
 " Clipboard {{{
 
-if exists('+clipboard')
-  vnoremap <C-c> "+y
-  vnoremap <C-x> "+c
-  inoremap <C-v> "+v
-endif
+"if exists('+clipboard')
+  vnoremap <C-c> "*y
+  vnoremap <C-x> "*c
+  inoremap <c-v> <c-r>*
+"endif
 
 
 " }}}
