@@ -1,5 +1,5 @@
 " Name: .vimrc
-" Description: Better .vimrc
+" Description: lean-vimrc - Better Vim Defaults
 " Maintainer:  James Cherti
 " URL:         https://github.com/jamescherti/minimal-vimrc
 "
