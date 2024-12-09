@@ -11,13 +11,19 @@ By default, only essential features are enabled, providing a minimal base that i
 
 - The default leader: `,`
 
-Clipboard:
-- Visual mode copy: C-c
-- Visual mode cut: C-x
-- Insert mode paste: C-v
+### Clipboard:
 
-Files:
-- Edit the directory where the current file or directory is: `-` (normal mode)
+Visual mode:
+- Copy: `C-c`
+- Cut: `C-x`
+
+Insert mode:
+- Paste: `C-v`
+
+### Files:
+
+Normal mode:
+- Edit the directory where the current file or directory is: `-`
 
 Grep:
 - Run grep (or rg, if available): `<leader>gr` (normal mode)
