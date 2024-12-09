@@ -9,7 +9,12 @@ By default, only essential features are enabled, providing a minimal base that i
 
 ## Key bindings
 
-- The default leader: `,`
+- The default <Leader>: `,`
+
+### Miscellaneous
+
+Normal mode:
+- Toggle wrap: `<Leader>wr`
 
 ### Clipboard:
 
