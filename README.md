@@ -1,5 +1,5 @@
 # Minimal ~/.vimrc - Better Vim Defaults
-![License](https://img.shields.io/github/license/jamescherti/be-quiet.el)
+![License](https://img.shields.io/github/license/jamescherti/minimal-vimrc)
 ![](https://raw.githubusercontent.com/jamescherti/minimal-vimrc/main/.images/made-for-gnu-emacs.svg)
 
 The **minimal-vimrc** project is a customizable Vim base that provides **better Vim defaults**, intended to serve as a solid foundation for a Vim configuration.

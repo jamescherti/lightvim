@@ -52,7 +52,7 @@ endif
 " }}}
 " Base options {{{
 
-let g:font_default_name = get(g:, 'font_default_name', "Iosevka Bold")
+let g:font_default_name = get(g:, 'font_default_name', "DejaVu Sans Mono")
 let g:font_default_size = get(g:, 'font_default_size', 14)
 
 " Init {{{
@@ -685,6 +685,41 @@ if has('gui_running')
   tnoremap <silent> <C-_> <C-w>:FontScaleDown<CR>
   tnoremap <silent> <C-S-+> <C-w>:FontScaleUp<CR>
 endif
+
+" }}}
+" Smart write {{{
+
+function! s:smart_write(filename, force) abort
+  let l:filename = a:filename
+  let l:force = a:force
+
+  let l:filename = empty(l:filename) ?
+      \ expand('%') : fnamemodify(l:filename, ':p')
+
+  if fnamemodify(l:filename, ':p') !=# expand('%:p') || &modified
+    execute 'silent write' .
+        \ ((l:force) ? '!' : '') . ' ' . fnameescape(l:filename)
+    echo 'Saved.'
+  else
+    if &buftype !=# ''
+      echoerr "Cannot write, 'buftype' option is set"
+      return
+    endif
+
+    if &readonly
+      echoerr "'readonly' option is set (add ! to overwrite)"
+      return
+    endif
+
+    echo 'Saved.'
+  endif
+endfunction
+
+command! -bar -bang -nargs=? -complete=file Write
+  \ call <SID>smart_write(<q-args>, <bang>0)
+nnoremap <silent> <C-s> <cmd>call <SID>smart_write('', 0)<CR>
+inoremap <silent> <C-s> <cmd>call <SID>smart_write('', 0)<CR>
+vnoremap <silent> <C-s> <cmd>call <SID>smart_write('', 0)<CR>
 
 " }}}
 " Plugins {{{
