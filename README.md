@@ -47,6 +47,12 @@ Insert mode, visual mode, and normal mode:
 Visual and normal mode:
 - Close window/split (or tab if there is one window in the current tab): `C-w c`
 
+### External plugins
+
+Normal mode:
+- Run MRU (requires mru.vim): `<Leader>m` or `<Leader>b`
+- Run fzf (requires fzf.vim): `C-p`
+
 ## Features
 
 - Better defaults

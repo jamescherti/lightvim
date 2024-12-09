@@ -676,9 +676,9 @@ function! s:gtk_adjust_font_size(amount, inc) abort
   let &guifont = l:font_name . ' ' . l:new_size
 endfunction
 
-command! FontScaleUp call s:guifontsize_scale_up()
-command! FontScaleDown call s:guifontsize_scale_down()
-command! -nargs=1 FontSize call s:guifontsize_change_size(<f-args>)
+command! FontScaleUp call <SID>guifontsize_scale_up()
+command! FontScaleDown call <SID>guifontsize_scale_down()
+command! -nargs=1 FontSize call <SID>guifontsize_change_size(<f-args>)
 
 if has('gui_running')
   nnoremap <silent> <C-_> :FontScaleDown<CR>
@@ -838,6 +838,32 @@ augroup DeleteWhiteSpaceGroup
 augroup END
 
 " }}}
+" }}}
+" External plugins {{{
+
+function! s:fzf() abort
+  try
+    if exists(':FZF')
+      FZF
+    endif
+  finally
+    if !has('gui_running')
+      " Fix issue in console mode
+      redraw!
+    endif
+  endtry
+endfunction
+nnoremap <silent> <C-p> :call <SID>fzf()<CR>
+
+if has('patch-8.2.1978')
+  nnoremap ,m <cmd>MRU<CR>
+  nnoremap ,b <cmd>MRU<CR>
+else
+  nnoremap ,m :MRU<CR>
+  nnoremap ,b :MRU<CR>
+endif
+
+
 " }}}
 
 " End: Post config }}}
