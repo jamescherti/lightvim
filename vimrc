@@ -460,7 +460,7 @@ set infercase
 
 " Keyboard {{{
 
-let g:mapleader = '\'
+let g:mapleader = ','
 
 if has('langmap') && exists('+langremap')
   " Prevent that the langmap option applies to characters that result from a
@@ -731,6 +731,44 @@ silent! helptags ALL
 if filereadable(fnamemodify('~/.vim/after.vim', ':p'))
   source ~/.vim/after.vim
 endif
+
+" }}}
+" Tabs {{{
+
+nnoremap <leader>t :tab split<CR>
+
+inoremap <C-S-k> :tabmove -1<CR>
+nnoremap <C-S-k> :tabmove -1<CR>
+vnoremap <C-S-k> :tabmove -1<CR>
+inoremap <C-S-j> :tabmove 1<CR>
+nnoremap <C-S-j> :tabmove 1<CR>
+vnoremap <C-S-j> :tabmove 1<CR>
+
+" Tab next / Tab previous
+" patch-8.2.1978 = <cmd> supported
+if has('patch-8.2.1978')
+  nnoremap <C-k> <cmd>tabprevious<CR><cmd>echon ''<CR>
+  nnoremap <C-j> <cmd>tabnext<CR><cmd>echon ''<CR>
+else
+  nnoremap <silent> <C-k> :tabprevious<CR>:echon ''<CR>
+  nnoremap <silent> <C-j> :tabnext<CR>:echon ''<CR>
+endif
+
+" Function to close the current window or tab if only one window remains
+" Map Ctrl-w c to call the function
+function! CloseWindowOrTab()
+  if winnr('$') > 1
+    " If there is more than one window, close the current window
+    close
+  else
+    " If only one window remains, close the tab
+    tabclose
+  endif
+endfunction
+
+nnoremap <C-w>c :call CloseWindowOrTab()<CR>
+inoremap <C-w>c :call CloseWindowOrTab()<CR>
+vnoremap <C-w>c :call CloseWindowOrTab()<CR>
 
 " }}}
 
