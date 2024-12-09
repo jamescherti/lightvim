@@ -1,7 +1,7 @@
 " Name: .vimrc
 " Description: lean-vimrc - Better Vim Defaults
 " Maintainer:  James Cherti
-" URL:         https://github.com/jamescherti/minimal-vimrc
+" URL:         https://github.com/jamescherti/lean-vimrc
 "
 " Licence:     Copyright (C) 2000-2024 James Cherti
 "              Distributed under terms of the MIT license.
@@ -573,9 +573,9 @@ nnoremap <silent> <Leader>wr :silent setlocal invwrap wrap?<CR>
 " Clipboard {{{
 
 "if exists('+clipboard')
-  vnoremap <C-c> "*y
-  vnoremap <C-x> "*c
-  inoremap <c-v> <c-r>*
+  vnoremap <C-c> "+y
+  vnoremap <C-x> "+c
+  inoremap <c-v> <c-r>+
 "endif
 
 
