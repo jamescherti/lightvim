@@ -95,19 +95,19 @@ if has('gui_running')
   " 'a': Autoselect:  If present, then whenever VISUAL mode is started,
   set guioptions-=a
 
-  " 'e'  Tab pages 
+  " 'e'  Tab pages
   set guioptions-=e
 
-  " 'g'  Grey menu items: Make menu items that are not active grey.  
+  " 'g'  Grey menu items: Make menu items that are not active grey.
   set guioptions-=g
 
-  " 'm'  Menu bar 
+  " 'm'  Menu bar
   set guioptions-=m
 
-  " 'r'  Right-hand scrollbar 
+  " 'r'  Right-hand scrollbar
   set guioptions-=r
 
-  " 'l'  Left-hand scrollbar 
+  " 'l'  Left-hand scrollbar
   set guioptions-=L
 
   " 't'  Include tearoff menu items.  Currently only works for Win32,
@@ -564,20 +564,21 @@ if has('autocmd')
 endif
 
 " end autocmd }}}
+" Functions {{{
 " Clipboard {{{
 
-if exists('+clipboard') 
+if exists('+clipboard')
   vnoremap <C-c> "+y
   vnoremap <C-x> "+c
-  vnoremap <C-v> "+p
-  inoremap <C-v> "+p
+  inoremap <C-v> "+v
 endif
+
 
 " }}}
 " GUI Font Resize {{{
-  
+
 execute 'set guifont=' . escape(g:font_default_name . ' ' . g:font_default_size, ' \"')
-  
+
 let s:minfontsize = 6
 let s:maxfontsize = 30
 
@@ -719,7 +720,7 @@ vnoremap <silent> <C-s> <cmd>call <SID>smart_write('', 0)<CR>
 
 " }}}
 " Plugins {{{
- 
+
 " Load all plugins now.
 " Plugins need to be added to runtimepath before helptags can be generated.
 packloadall
@@ -767,12 +768,73 @@ function! CloseWindowOrTab()
 endfunction
 
 nnoremap <C-w>c :call CloseWindowOrTab()<CR>
-inoremap <C-w>c :call CloseWindowOrTab()<CR>
 vnoremap <C-w>c :call CloseWindowOrTab()<CR>
 
 " }}}
+" Miscellaneous key bindings {{{
 
-""
+" Grep
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --hidden\ -g\ '!.git/'
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+else
+  set grepprg=grep\ -Rn\ --exclude-dir=.git\ --exclude-dir=.svn\ --no-messages
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
+
+nnoremap ,gr :silent grep<Space>
+
+" }}}
+" Whitespace delete {{{
+
+function! DeleteWhiteSpace() abort
+  if &buftype !=# ''
+    return
+  endif
+
+  let l:save_register = @@
+  let l:save = winsaveview()
+
+  let l:delete_white_space_git_changes =
+    \ get(b:, 'delete_white_space_git_changes',
+    \     get(g:, 'delete_white_space_git_changes', 0))
+
+  if l:delete_white_space_git_changes
+    let l:range_list = git#get_diff_lines()
+  else
+    let l:range_list = ['%']
+  endif
+
+  for l:range in l:range_list
+    if l:range !=# '%'
+      if l:range > line('$')
+        continue
+      endif
+    endif
+    execute 'keeppatterns ' . l:range . 'substitute/\s\+$//e'
+  endfor
+
+  " Delete lines in the end
+  if !l:delete_white_space_git_changes
+    while line('$') > 1 && getline(line('$')) ==# ''
+      keeppatterns $g/^$/d
+    endwhile
+  endif
+
+  call winrestview(l:save)
+  let @@ = l:save_register
+endfunction
+
+augroup DeleteWhiteSpaceGroup
+  autocmd!
+  "autocmd BufWritePre * if !exists('b:keep_white_space') || b:keep_white_space
+  "      \ call DeleteWhiteSpace() | endif
+  autocmd BufWritePre * call DeleteWhiteSpace()
+augroup END
+
+" }}}
+" }}}
+
 " End: Post config }}}
 
 " vim:foldmethod=marker:syntax=vim
