@@ -567,14 +567,10 @@ endif
 " Clipboard {{{
 
 if exists('+clipboard') 
-  " Vim clipboard
-  function! s:get_from_clipboard() abort
-    return @+
-  endfunction
-
   vnoremap <C-c> "+y
   vnoremap <C-x> "+c
   vnoremap <C-v> "+p
+  inoremap <C-v> "+p
 endif
 
 " }}}
