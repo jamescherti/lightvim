@@ -40,7 +40,7 @@ Insert mode, visual mode, and normal mode:
 - Move tab to the right: `<C-S-J>`
 
 Visual and normal mode:
-- Close split (or tab if there is one window in the current tab): `C-w c`
+- Close window/split (or tab if there is one window in the current tab): `C-w c`
 
 ## Features
 
