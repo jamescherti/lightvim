@@ -52,9 +52,15 @@ Normal mode:
 
 ## Features
 
-- Better defaults
+- Enhanced defaults that improve the editing experience with Vim, based on extensive research and testing.
+- Automatically remove unnecessary whitespace before saving files.
 - Useful keybindings (tabs, grep, etc.)
-- Delete whitespace
+
+## Author and license
+
+Copyright (C) 2000-2024 [James Cherti](https://www.jamescherti.com).
+
+Distributed under terms of the MIT license.
 
 ## Links
 
