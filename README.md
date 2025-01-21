@@ -58,7 +58,7 @@ Normal mode:
 
 ## Author and license
 
-Copyright (C) 2000-2024 [James Cherti](https://www.jamescherti.com).
+Copyright (C) 2000-2025 [James Cherti](https://www.jamescherti.com).
 
 Distributed under terms of the MIT license.
 

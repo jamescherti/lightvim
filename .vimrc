@@ -3,7 +3,7 @@
 " Maintainer:  James Cherti
 " URL:         https://github.com/jamescherti/lean-vimrc
 "
-" Licence:     Copyright (C) 2000-2024 James Cherti
+" Licence:     Copyright (C) 2000-2025 James Cherti
 "              Distributed under terms of the MIT license.
 "
 "              Permission is hereby granted, free of charge, to any person
