@@ -2,4 +2,4 @@
 
 set -euf -o pipefail
 set -o xtrace
-cp .vimrc ~/.vimrc
+cp vimrc ~/.vimrc
