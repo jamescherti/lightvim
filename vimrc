@@ -1,7 +1,7 @@
 " Name: .vimrc
-" Description: lean-vimrc - Better Vim Defaults
+" Description: jc-vimrc - Better Vim Defaults
 " Maintainer:  James Cherti
-" URL:         https://github.com/jamescherti/lean-vimrc
+" URL:         https://github.com/jamescherti/jc-vimrc
 "
 " Licence:     Copyright (C) 2000-2025 James Cherti
 "              Distributed under terms of the MIT license.
