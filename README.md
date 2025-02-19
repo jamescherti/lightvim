@@ -15,6 +15,8 @@ By default, only essential features are enabled, providing a minimal base that i
 
 Normal mode:
 - Toggle wrap: `<Leader>wr`
+- Previous buffer: `A-o`
+- Next buffer: `A-i`
 
 ### Clipboard:
 

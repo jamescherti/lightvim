@@ -568,6 +568,9 @@ endif
 
 nnoremap <silent> <Leader>wr :silent setlocal invwrap wrap?<CR>
 
+nnoremap <A-o> :bprevious<CR>
+nnoremap <A-i> :bnext<CR>
+
 " }}}
 " Functions {{{
 " Chdir to the file directory {{{
