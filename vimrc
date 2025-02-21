@@ -766,21 +766,6 @@ inoremap <silent> <C-s> <cmd>call <SID>smart_write('', 0)<CR>
 vnoremap <silent> <C-s> <cmd>call <SID>smart_write('', 0)<CR>
 
 " }}}
-" Plugins {{{
-
-" Load all plugins now.
-" Plugins need to be added to runtimepath before helptags can be generated.
-packloadall
-
-" Load all of the helptags now, after plugins have been loaded.
-" All messages and errors will be ignored.
-silent! helptags ALL
-
-if filereadable(fnamemodify('~/.vim/after.vim', ':p'))
-  source ~/.vim/after.vim
-endif
-
-" }}}
 " Tabs {{{
 
 nnoremap <leader>t :tab split<CR>
@@ -1072,6 +1057,62 @@ nnoremap <silent> * :let @/ = expand('<cword>')<CR>:echo expand('<cword>')<CR>
 nnoremap <silent> <C-*> :keepjumps normal! mi*`i<CR>:echo '/\<' . expand('<cword>') . '\>'<CR>
 
 " }}}
+" Miscellaneous functions {{{
+
+function! JcMapCommand(modes, key_mapping, ...) abort
+  let l:has_cmd = 0
+  let l:pre_cmd = ':'
+  let l:post_cmd = ":echom ''<CR>"
+  if has('patch-8.2.1978')
+    " The 'patch-8.2.1978' adds the '<cmd>' feature
+    let l:has_cmd = 1
+    let l:pre_cmd = '<cmd>'
+    let l:post_cmd = ''
+  endif
+
+  for l:mode in split(a:modes, '\zs')
+    let l:local_pre_cmd = l:pre_cmd
+    if l:has_cmd ==# 0
+      if l:mode ==# 't'
+        let l:local_pre_cmd = '<C-w>' . l:local_pre_cmd
+      elseif l:mode !=# 'n'
+        let l:local_pre_cmd = '<Esc>' . l:local_pre_cmd
+      endif
+    endif
+
+    let l:local_post_cmd = l:post_cmd
+    if l:has_cmd ==# 0
+      if l:mode ==# 'v'
+        let l:local_post_cmd .= 'gv'
+      endif
+
+      if l:mode ==# 'i'
+        let l:local_post_cmd .= 'a'
+      endif
+    endif
+
+    let l:local_command = ''
+    for l:item_command in a:000
+      let l:local_command .= l:local_pre_cmd .
+        \ ((l:has_cmd ==# 0 && l:mode ==# 'v') ? '<C-U>' : '') .
+        \ l:item_command . '<CR>'
+    endfor
+
+    execute l:mode . 'noremap ' . a:key_mapping . ' ' .
+      \ l:local_command . l:local_post_cmd
+  endfor
+endfunction
+
+function! JcClearHighlight() abort
+  let @/=''
+  echon ''
+  redraw
+  syntax sync fromstart
+endfunction
+
+call JcMapCommand('nvi', '<C-l>', ':call JcClearHighlight()')
+
+" }}}
 " }}}
 " External plugins {{{
 
@@ -1097,6 +1138,21 @@ else
   nnoremap <Leader>b :MRU<CR>
 endif
 
+
+" }}}
+" Plugins {{{
+
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
+
+if filereadable(fnamemodify('~/.vim/after.vim', ':p'))
+  source ~/.vim/after.vim
+endif
 
 " }}}
 

@@ -26,6 +26,9 @@ Visual mode:
 - Search forward for the current selection: `//` or `*`
 - Search backward for the current selection: `#`
 
+Visual, normal, and insert mode:
+- Redraw the screen and clears search highlights: `<C-l>`
+
 ### Clipboard:
 
 Normal mode:
