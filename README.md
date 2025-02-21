@@ -18,6 +18,7 @@ Normal mode:
 - Previous buffer: `A-o`
 - Next buffer: `A-i`
 - Change the current working directory to the directory of the current buffer: `<Leader>cd`
+- Open the directory of the current file: `-`
 
 ### Clipboard:
 

@@ -544,11 +544,11 @@ if has('autocmd')
     autocmd FileType sh setlocal indentkeys-=)
     autocmd FileType yaml,yaml.ansible
       \ setlocal indentkeys-=<:> indentkeys-=0# indentkeys-=0- indentkeys-=<:>
-      \ indentexpr= autoindent
+      \ indentexpr= autoindent shiftwidth=2 tabstop=2 softtabstop=2
     autocmd FileType python setlocal indentkeys-=<:> indentkeys-=0#
     autocmd FileType vim
       \ setlocal indentkeys-=0} indentkeys-==} indentkeys-==cat
-      \ indentkeys-==finall
+      \ indentkeys-==finall shiftwidth=2 tabstop=2 softtabstop=2
 
     " autocmd FileType python,sh,puppet,vim setlocal textwidth=78
     autocmd FileType vim,python,sh setlocal colorcolumn=80
@@ -595,6 +595,9 @@ function! s:chdir_file_dir() abort
 endfunction
 
 nnoremap <Leader>cd :call <SID>chdir_file_dir()<CR>
+
+" Open the directory of the current file
+nnoremap - :edit %:p:h<CR>
 
 " }}}
 " Clipboard {{{
