@@ -311,9 +311,6 @@ set t_vb=
 " not been changed inside of Vim, automatically read it again
 set autoread
 
-" Don't parse modelines (search 'vim modeline vulnerability').
-set nomodeline
-
 " Activates the status line (2 = always, 1 = only if there are 2 windows)
 set laststatus=2
 
@@ -602,12 +599,35 @@ nnoremap <Leader>cd :call <SID>chdir_file_dir()<CR>
 " }}}
 " Clipboard {{{
 
-"if exists('+clipboard')
+if exists('+clipboard')
+  function! s:paste_excluding_newline(text, mode) abort
+    let l:save_register = @@
+    try
+      let @@ = string#rstrip(a:text, "\n")
+      if a:mode ==# 'visual' || col('.') ==# 1
+        normal! P
+      else
+        normal! p
+      endif
+
+      call vim#select_pasted_text()
+
+      if a:mode ==# 'insert'
+        normal! `]
+        if &selection ==# 'exclusive'
+          normal! l
+        endif
+      endif
+    finally
+      let @@ = l:save_register
+    endtry
+  endfunction
+
   vnoremap <C-c> "+y
   vnoremap <C-x> "+c
-  inoremap <c-v> <c-r>+
-"endif
-
+  inoremap <c-v> <Esc>"+pi
+  "inoremap <C-v> <Esc>:call <SID>paste_excluding_newline(<SID>get_from_clipboard(), 'insert')<CR><Esc>i
+endif
 
 " }}}
 " GUI Font Resize {{{
@@ -1000,19 +1020,20 @@ function! JcBetterTabline() abort
   return l:tabline
 endfunction
 
-function! s:better_guitabline() abort
-  return funcref(g:tab_label_function)(tabpagenr())
-endfunction
+" let g:tab_label_function = 'JcTabLabelClassic'
+let g:tab_label_function = 'JcTabLabelGrouped'
 
 if exists('+showtabline')
-  " let g:tab_label_function = 'JcTabLabelClassic'
-  let g:tab_label_function = 'JcTabLabelGrouped'
   set tabline=%!JcBetterTabline()
 endif
 
 if exists('+guitablabel')
+  function! JcBetterGuitabline() abort
+    return funcref(g:tab_label_function)(tabpagenr())
+  endfunction
+
   function! s:set_guitabline() abort
-      set guitablabel=%{s:better_guitabline()}
+      set guitablabel=%{JcBetterGuitabline()}
       " set guioptions+=e
   endfunction
 
