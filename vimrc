@@ -61,7 +61,7 @@ let g:font_default_size = get(g:, 'font_default_size', 14)
 if has('nvim')
   set viminfo='10,\"100,:100,n~/.nviminfo
 else
-  set viminfo='100,\"300,<50,s10,h,:20,n~/.vim_bundle/misc/viminfo
+  set viminfo='100,\"300,<50,s10,h,:20,n~/.viminfo
 endif
 
 " Session
@@ -567,6 +567,10 @@ nnoremap <silent> <Leader>wr :silent setlocal invwrap wrap?<CR>
 
 nnoremap <A-o> :bprevious<CR>
 nnoremap <A-i> :bnext<CR>
+
+" Shift the selection to the right/left and reselect the text in visual mode
+vnoremap > >gv
+vnoremap < <gv
 
 " }}}
 " Functions {{{
