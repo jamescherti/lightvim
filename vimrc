@@ -603,33 +603,22 @@ nnoremap - :edit %:p:h<CR>
 " Clipboard {{{
 
 if exists('+clipboard')
-  function! s:paste_excluding_newline(text, mode) abort
-    let l:save_register = @@
-    try
-      let @@ = string#rstrip(a:text, "\n")
-      if a:mode ==# 'visual' || col('.') ==# 1
-        normal! P
-      else
-        normal! p
-      endif
-
-      call vim#select_pasted_text()
-
-      if a:mode ==# 'insert'
-        normal! `]
-        if &selection ==# 'exclusive'
-          normal! l
-        endif
-      endif
-    finally
-      let @@ = l:save_register
-    endtry
+  function! JcSelectPastedText() range
+    call execute('normal! `[' . strpart(getregtype(), 0, 1) . '`]')
+    if &selection ==# 'exclusive'
+      normal! l
+    endif
   endfunction
+
+  if has('patch-8.2.1978')
+    nnoremap gp <cmd>call JcSelectPastedText()<CR>
+  else
+    nnoremap gp :call JcSelectPastedText()<CR>
+  endif
 
   vnoremap <C-c> "+y
   vnoremap <C-x> "+c
   inoremap <c-v> <Esc>"+pi
-  "inoremap <C-v> <Esc>:call <SID>paste_excluding_newline(<SID>get_from_clipboard(), 'insert')<CR><Esc>i
 endif
 
 " }}}
@@ -1046,7 +1035,6 @@ if exists('+guitablabel')
   augroup END
 endif
 
-" }}}
 " }}}
 " External plugins {{{
 

@@ -22,6 +22,9 @@ Normal mode:
 
 ### Clipboard:
 
+Normal mode:
+- Select pasted text: `gp`
+
 Visual mode:
 - Copy: `C-c`
 - Cut: `C-x`
