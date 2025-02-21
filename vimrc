@@ -59,9 +59,15 @@ let g:font_default_size = get(g:, 'font_default_size', 14)
 
 " Tell vim to remember certain things when we exit
 if has('nvim')
-  set viminfo='10,\"100,:100,n~/.nviminfo
+  set viminfo='10,\"100,:100
 else
-  set viminfo='100,\"300,<50,s10,h,:20,n~/.viminfo
+  " 100: Search histories.
+  " \"300: Register entries.
+  " <50: Limits file marks to this amount of entries.
+  " s10: Number of file marks to keep.
+  " h: Stores the history of each file that was edited.
+  " :20: command-line history entries.
+  set viminfo='100,\"300,<50,s10,h,:20
 endif
 
 " Session
@@ -537,6 +543,10 @@ highlight SpecialKey ctermfg=1
 if has('autocmd')
   augroup FileTypesOptions
     autocmd!
+    autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \ execute "normal! g`\"" |
+      \ endif
 
     autocmd FileType dockerfile setlocal conceallevel=0
     autocmd FileType text setlocal autoindent
