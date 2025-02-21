@@ -597,7 +597,7 @@ function! s:chdir_file_dir() abort
   pwd
 endfunction
 
-nnoremap ,cd :call <SID>chdir_file_dir()<CR>
+nnoremap <Leader>cd :call <SID>chdir_file_dir()<CR>
 
 " }}}
 " Clipboard {{{
@@ -817,7 +817,7 @@ else
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
-nnoremap ,gr :silent grep<Space>
+nnoremap <Leader>gr :silent grep<Space>
 
 " }}}
 " Whitespace delete {{{
@@ -868,6 +868,161 @@ augroup DeleteWhiteSpaceGroup
 augroup END
 
 " }}}
+" Tabline {{{
+
+function! s:string_rstrip(string, chars) abort
+  let l:index = len(a:string) - 1
+  while l:index >= 0
+    let l:found = 0
+    for l:char in split(a:chars, '\zs')
+      if a:string[l:index] ==# l:char
+        let l:found = 1
+        break
+      endif
+    endfor
+
+    let l:index -= 1
+
+    if ! l:found
+      break
+    endif
+  endwhile
+
+  return a:string[0:l:index+1]
+endfunction
+
+function! s:path_sep() abort
+      return (!exists('+shellslash') || &shellslash) ? '/' : '\'
+endfunction
+
+function! s:path_rstrip_sep(path) abort
+  return s:string_rstrip(a:path, s:path_sep())
+endfunction
+
+function! JcTabLabelClassic(tabnr) abort
+  let l:bufnr = tabpagebuflist(a:tabnr)[tabpagewinnr(a:tabnr) - 1]
+
+  let l:modified = 0
+  if getbufvar(l:bufnr, '&modified')
+    let l:modified = 1
+  endif
+
+  let l:tablabel = ''
+  let l:custom_tablabel = gettabvar(a:tabnr, 'tablabel', '')
+  if empty(l:custom_tablabel)
+    let l:bufname = bufname(l:bufnr)
+    if empty(l:bufname)
+      let l:tablabel = empty(&buftype) ? 'No Name' : '<' . &buftype . '>'
+    else
+      let l:tablabel = fnamemodify(l:bufname, ':t')
+    endif
+  else
+    let l:tablabel .= l:custom_tablabel
+  endif
+
+  if l:modified
+    let l:tablabel .= '*'
+  endif
+
+  return l:tablabel
+endfunction
+
+function! JcTabLabelGrouped(tabnr) abort
+  let l:tablabel = gettabvar(a:tabnr, 'tablabel', '')
+  if ! empty(l:tablabel)
+    return l:tablabel
+  endif
+
+  " Shows tab1|tab2|tab3 when the tab is not the current one and tab1 when it
+  " is the current one
+  " if a:tabnr ==# tabpagenr()
+  "   let l:tabpagebuflist = [tabpagebuflist(a:tabnr)[tabpagewinnr(a:tabnr) - 1]]
+  " else
+  "   let l:tabpagebuflist = tabpagebuflist(a:tabnr)
+  " endif
+
+  " Shows tab1|tab2|tab3 all the time
+  let l:tabpagebuflist = tabpagebuflist(a:tabnr)
+
+  let l:tablabel = ''
+  let l:bufnr_added = []
+  for l:bufnr in l:tabpagebuflist
+    if index(l:bufnr_added, l:bufnr) >= 0
+      continue
+    endif
+    call add(l:bufnr_added, l:bufnr)
+
+    " Tab label
+    let l:bufname = s:path_rstrip_sep(bufname(l:bufnr))
+
+    " Basename
+    let l:new_tablabel = ''
+    if !empty(l:bufname)
+      if isdirectory(l:bufname)
+        let l:new_tablabel .= 'dir:'
+        let l:new_tablabel .=
+          \ fnamemodify(fnamemodify(l:bufname, ':h'), ':t')
+        let l:new_tablabel .= s:path_sep()
+      endif
+
+      let l:new_tablabel .= fnamemodify(l:bufname, ':t')
+    endif
+
+    " Add the label
+    if l:tablabel !=# '' && l:new_tablabel !=# ''
+      let l:tablabel .= '|'
+    endif
+    let l:tablabel .= l:new_tablabel
+
+    if getbufvar(l:bufnr, '&modified')
+      let l:tablabel .= '*'
+    endif
+  endfor
+
+  if empty(l:tablabel)
+    let l:tablabel = '-'
+  endif
+
+  return l:tablabel
+endfunction
+
+function! JcBetterTabline() abort
+  let l:tabline = ''
+
+  for l:num in range(1, tabpagenr('$'))
+    let l:tabline .= (l:num != tabpagenr()) ? '%#TabLine#' : '%#TabLineSel#'
+    let l:tabline .= '%' . l:num . 'T %{' . g:tab_label_function . '(' . l:num . ')} '
+  endfor
+
+  let l:tabline .= '%#TabLineFill#%T%='
+  let l:tabline .= repeat('%#TabLine#%999X[X]', l:num > 1)
+
+  return l:tabline
+endfunction
+
+function! s:better_guitabline() abort
+  return funcref(g:tab_label_function)(tabpagenr())
+endfunction
+
+if exists('+showtabline')
+  " let g:tab_label_function = 'JcTabLabelClassic'
+  let g:tab_label_function = 'JcTabLabelGrouped'
+  set tabline=%!JcBetterTabline()
+endif
+
+if exists('+guitablabel')
+  function! s:set_guitabline() abort
+      set guitablabel=%{s:better_guitabline()}
+      " set guioptions+=e
+  endfunction
+
+  augroup GuiTabLine
+    autocmd!
+    autocmd GUIEnter * call <SID>set_guitabline()
+  augroup END
+endif
+
+" }}}
 " }}}
 " External plugins {{{
 
@@ -886,11 +1041,11 @@ endfunction
 nnoremap <silent> <C-p> :call <SID>fzf()<CR>
 
 if has('patch-8.2.1978')
-  nnoremap ,m <cmd>MRU<CR>
-  nnoremap ,b <cmd>MRU<CR>
+  nnoremap <Leader>m <cmd>MRU<CR>
+  nnoremap <Leader>b <cmd>MRU<CR>
 else
-  nnoremap ,m :MRU<CR>
-  nnoremap ,b :MRU<CR>
+  nnoremap <Leader>m :MRU<CR>
+  nnoremap <Leader>b :MRU<CR>
 endif
 
 

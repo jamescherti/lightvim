@@ -17,6 +17,7 @@ Normal mode:
 - Toggle wrap: `<Leader>wr`
 - Previous buffer: `A-o`
 - Next buffer: `A-i`
+- Change the current working directory to the directory of the current buffer: `<Leader>cd`
 
 ### Clipboard:
 
@@ -119,6 +120,9 @@ This vimrc enhances defaults that improve the editing experience with Vim, based
 
 18. **Smart Write Function**:
 - Defines a function (`smart_write`) to save files intelligently, ensuring proper handling of modified and non-modified files.
+
+19. **Better tabline**:
+- Enhance the visual clarity of the tabline by displaying solely the filename and removing unnecessary information.
 
 ## Author and license
 
