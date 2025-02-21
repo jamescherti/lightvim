@@ -1036,6 +1036,43 @@ if exists('+guitablabel')
 endif
 
 " }}}
+" Visual search {{{
+
+" A global variable (s:VeryLiteral) controls whether selected whitespace
+" matches any whitespace (by default, VeryLiteral is off, so any whitespace
+" is found).
+let s:JcVeryLiteral = 1
+
+function! JcVisualSearch(cmd) abort
+  let old_reg = getreg('"')
+  let old_regtype = getregtype('"')
+  normal! gvy
+  if @@ =~? '^[0-9a-z,_]*$' || @@ =~? '^[0-9a-z ,_]*$' && s:JcVeryLiteral
+    let @/ = @@
+  else
+    let pat = escape(@@, a:cmd.'\')
+    if s:JcVeryLiteral
+      let pat = substitute(pat, '\n', '\\n', 'g')
+    else
+      let pat = substitute(pat, '^\_s\+', '\\s\\+', '')
+      let pat = substitute(pat, '\_s\+$', '\\s\\*', '')
+      let pat = substitute(pat, '\_s\+', '\\_s\\+', 'g')
+    endif
+    let @/ = '\V'.pat
+  endif
+  normal! gV
+  call setreg('"', old_reg, old_regtype)
+endfunction
+
+vnoremap <silent> // :<C-U>call JcVisualSearch('/')<CR>
+vnoremap <silent> * :<C-U>call JcVisualSearch('/')<CR>/<C-R>/<CR>
+vnoremap <silent> # :<C-U>call JcVisualSearch('?')<CR>?<C-R>/<CR>
+vmap <kMultiply> //
+nnoremap <silent> * :let @/ = expand('<cword>')<CR>:echo expand('<cword>')<CR>
+nnoremap <silent> <C-*> :keepjumps normal! mi*`i<CR>:echo '/\<' . expand('<cword>') . '\>'<CR>
+
+" }}}
+" }}}
 " External plugins {{{
 
 function! s:fzf() abort

@@ -19,6 +19,12 @@ Normal mode:
 - Next buffer: `A-i`
 - Change the current working directory to the directory of the current buffer: `<Leader>cd`
 - Open the directory of the current file: `-`
+- Search forward using the current word: `*`
+- Search backward using the current word: `#`
+
+Visual mode:
+- Search forward for the current selection: `//` or `*`
+- Search backward for the current selection: `#`
 
 ### Clipboard:
 
@@ -127,6 +133,10 @@ This vimrc enhances defaults that improve the editing experience with Vim, based
 
 19. **Better tabline**:
 - Enhance the visual clarity of the tabline by displaying solely the filename and removing unnecessary information.
+
+20. **Useful functions**:
+- Select pasted text
+- Search the current selection using `//`, `*`, or `#`.
 
 ## Author and license
 
