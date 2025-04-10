@@ -547,7 +547,7 @@ if has('autocmd')
       \ if &filetype !=# 'gitcommit' || expand('%:t') !=# 'COMMIT_EDITMSG' |
       \   if line("'\"") > 0 && line("'\"") <= line("$") |
       \     execute "normal! g`\"" |
-      \   endif
+      \   endif |
       \ endif
 
     autocmd FileType dockerfile setlocal conceallevel=0
