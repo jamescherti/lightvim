@@ -544,8 +544,10 @@ if has('autocmd')
   augroup FileTypesOptions
     autocmd!
     autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \ execute "normal! g`\"" |
+      \ if &filetype !=# 'gitcommit' || expand('%:t') !=# 'COMMIT_EDITMSG' |
+      \   if line("'\"") > 0 && line("'\"") <= line("$") |
+      \     execute "normal! g`\"" |
+      \   endif
       \ endif
 
     autocmd FileType dockerfile setlocal conceallevel=0

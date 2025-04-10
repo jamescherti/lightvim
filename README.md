@@ -86,6 +86,7 @@ This vimrc enhances defaults that improve the editing experience with Vim, based
 
 4. **Session Management**:
 - Defines options for Vim sessions and view settings (e.g., folds, current directory, cursor position).
+- Restore the cursor position when editing a file, except for Git commit files such as `COMMIT_EDITMSG`.
 
 5. **GUI and Console Configuration**:
 - Customizes GUI-specific settings, including window size, font rendering, cursor behavior, and disabling unnecessary UI elements.
