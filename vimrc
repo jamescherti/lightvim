@@ -547,7 +547,7 @@ if has('autocmd')
       \ if &filetype !=# 'gitcommit' || expand('%:t') !=# 'COMMIT_EDITMSG' |
       \   if line("'\"") > 0 && line("'\"") <= line("$") |
       \     execute "normal! g`\"" |
-      \   endif
+      \   endif |
       \ endif
 
     autocmd FileType dockerfile setlocal conceallevel=0
@@ -739,11 +739,29 @@ command! FontScaleDown call <SID>guifontsize_scale_down()
 command! -nargs=1 FontSize call <SID>guifontsize_change_size(<f-args>)
 
 if has('gui_running')
+  nnoremap <silent> <C-MouseUp> :FontScaleDown<CR>
+  nnoremap <silent> <C-MouseDown> :FontScaleUp<CR>
+  tnoremap <silent> <C-MouseUp> :FontScaleDown<CR>
+  tnoremap <silent> <C-MouseDown> :FontScaleUp<CR>
+
   nnoremap <silent> <C-_> :FontScaleDown<CR>
   nnoremap <silent> <C-S-+> :FontScaleUp<CR>
-
   tnoremap <silent> <C-_> <C-w>:FontScaleDown<CR>
   tnoremap <silent> <C-S-+> <C-w>:FontScaleUp<CR>
+
+  if has('patch-8.2.1978')
+    inoremap <silent> <C-MouseUp> <cmd>FontScaleDown<CR>
+    inoremap <silent> <C-MouseDown> <cmd>FontScaleUp<CR>
+
+    inoremap <silent> <C-_> <cmd>FontScaleDown<CR>
+    inoremap <silent> <C-S-+> <cmd>FontScaleUp<CR>
+  else
+    inoremap <silent> <C-MouseUp> <Esc>:FontScaleDown<CR>a
+    inoremap <silent> <C-MouseDown> <Esc>:FontScaleUp<CR>a
+
+    inoremap <silent> <C-_> <Esc>:FontScaleDown<CR>a
+    inoremap <silent> <C-S-+> <Esc>:FontScaleUp<CR>a
+  endif
 endif
 
 " }}}

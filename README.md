@@ -60,6 +60,12 @@ Insert mode, visual mode, and normal mode:
 Visual and normal mode:
 - Close window/split (or tab if there is one window in the current tab): `C-w c`
 
+### GUI
+
+Normal and insert mode:
+- Increase font size: `Ctrl` + `+` (or `Ctrl` + Mouse Wheel Up)
+- Decrease font size: `Ctrl` + `-` (or `Ctrl` + Mouse Wheel Down)
+
 ### External plugins
 
 Normal mode:
