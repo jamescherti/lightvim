@@ -1,7 +1,7 @@
-# jc-vimrc - Better Vim Defaults
+# jc-vimrc - A Vim configuration that provides solid foundation for a Vim configuration
 ![License](https://img.shields.io/github/license/jamescherti/jc-vimrc)
 
-The **jc-vimrc** project is a customizable Vim base that provides **better Vim defaults**, intended to serve as a solid foundation for a Vim configuration.
+The **jc-vimrc** project is a customizable Vim configuration that provides **better Vim defaults**, intended to serve as a solid foundation for a Vim configuration.
 
 Creating *jc-vimrc* involved extensive research and testing to find the best parameters and optimizations for an vimrc file. The concept behind *jc-vimrc* is to provide a clean, bloat-free base.
 
