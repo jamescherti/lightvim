@@ -7,7 +7,7 @@ Creating *jc-vimrc* involved extensive research and testing to find the best par
 
 ## Key bindings
 
-- The default <Leader>: `,`
+- The default `<Leader>`: `,`
 
 ### Miscellaneous
 
