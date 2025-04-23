@@ -325,7 +325,9 @@ set laststatus=2
 set showtabline=2
 
 " Print options
-set printoptions=paper:letter
+if !has('nvim')
+  set printoptions=paper:letter
+endif
 
 " By default, setting wrap displays lines by breaking words if necessary. You
 " can force it to preserve words instead by only breaking at certain

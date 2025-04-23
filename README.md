@@ -1,4 +1,4 @@
-# efficient-vim-config - The Ultimate Vim Configuration
+# efficient-vim-config - The Efficient Vim/Neovim Configuration
 ![License](https://img.shields.io/github/license/jamescherti/efficient-vim-config)
 
 The **efficient-vim-config** project is a Vim configuration that is intended to serve as a solid foundation for a Vim configuration.
