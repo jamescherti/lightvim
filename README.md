@@ -3,9 +3,9 @@
 
 The **jc-vimrc** project is a Vim configuration that is intended to serve as a solid foundation for a Vim configuration.
 
-Creating *jc-vimrc* involved over 24 years of research and testing to identify the most effective parameters and optimizations for a Vim configuration file. The author began developing this configuration when first adopting Vim, continuously refining it over the years. With over 1,190 lines of code, it offers a robust foundation for your own Vim setup.
+The author began developing this configuration upon first adopting Vim and has continuously refined it over 25 years of research and testing to identify the most effective parameters and optimizations for a Vim configuration file. With over 1,190 lines of code, it offers a robust foundation for your own Vim setup.
 
-This Vim configuration lets you choose exactly which plugins to use. By including no plugins by default, it gives you the freedom to build a setup suited to your specific needs, without unnecessary dependencies or bloat.
+This Vim configuration lets you choose exactly which plugins to use, giving you the freedom to build a setup suited to your specific needs, without unnecessary dependencies or bloat.
 
 ## Key bindings
 
