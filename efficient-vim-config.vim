@@ -1,6 +1,6 @@
 " Name: .vimrc
-" Description: A minimal and optimized Vim configuration with improved
-"              defaults and sensible enhancements.
+" Description: A minimal and optimized Vim/Neovim configuration with
+"              improved defaults and sensible enhancements.
 " Maintainer:  James Cherti
 " URL:         https://github.com/jamescherti/efficient-vim-config
 "
