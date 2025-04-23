@@ -1,11 +1,11 @@
-# jc-vimrc - The Ultimate Vim Configuration
-![License](https://img.shields.io/github/license/jamescherti/jc-vimrc)
+# efficient-vimrc - The Ultimate Vim Configuration
+![License](https://img.shields.io/github/license/jamescherti/efficient-vimrc)
 
-The **jc-vimrc** project is a Vim configuration that is intended to serve as a solid foundation for a Vim configuration.
+The **efficient-vimrc** project is a Vim configuration that is intended to serve as a solid foundation for a Vim configuration.
 
 The author began developing this configuration upon first adopting Vim and has continuously refined it over 25 years of research and testing to identify the most effective parameters and optimizations for a Vim configuration file.
 
-This Vim configuration lets you choose exactly which plugins to use, giving you the freedom to build a setup suited to your specific needs, without unnecessary dependencies or bloat.
+This Vim configuration does not install any plugins. It lets you choose exactly which plugins to use, giving you the freedom to build a setup suited to your specific needs without unnecessary dependencies or bloat.
 
 ## Key bindings
 
@@ -156,4 +156,4 @@ Distributed under terms of the MIT license.
 
 ## Links
 
-- [jc-vimrc @GitHub](https://github.com/jamescherti/jc-vimrc)
+- [efficient-vimrc @GitHub](https://github.com/jamescherti/efficient-vimrc)
