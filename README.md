@@ -1,9 +1,9 @@
-# jc-vimrc - A Vim configuration that provides solid foundation for a Vim configuration
+# jc-vimrc - The Ultimate Vim Configuration
 ![License](https://img.shields.io/github/license/jamescherti/jc-vimrc)
 
-The **jc-vimrc** project is a customizable Vim configuration, intended to serve as a solid foundation for a Vim configuration.
+The **jc-vimrc** project is a Vim configuration that is intended to serve as a solid foundation for a Vim configuration.
 
-Creating *jc-vimrc* involved extensive research and testing to find the best parameters and optimizations for an vimrc file. The concept behind *jc-vimrc* is to provide a clean, bloat-free base.
+Creating *jc-vimrc* involved over 24 years of research and testing to identify the most effective parameters and optimizations for a Vim configuration file. The author began developing this configuration when first adopting Vim, continuously refining it over the years. With over 1,190 lines of code, it offers a robust foundation for your own Vim setup.
 
 ## Key bindings
 
