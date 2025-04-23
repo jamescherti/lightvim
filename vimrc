@@ -2,7 +2,7 @@
 " Description: A minimal and optimized Vim configuration with improved
 "              defaults and sensible enhancements.
 " Maintainer:  James Cherti
-" URL:         https://github.com/jamescherti/efficient-vimrc
+" URL:         https://github.com/jamescherti/efficient-vim-config
 "
 " Licence:     Copyright (C) 2000-2025 James Cherti
 "              Distributed under terms of the MIT license.
