@@ -46,8 +46,14 @@ setglobal encoding=utf-8
 setglobal fileencodings=utf-8
 scriptencoding utf-8
 
-if filereadable(fnamemodify('~/.vim/before.vim', ':p'))
-  source ~/.vim/before.vim
+if has('nvim')
+  if filereadable(fnamemodify('~/.nvim/before.vim', ':p'))
+    source ~/.vim/before.vim
+  endif
+else
+  if filereadable(fnamemodify('~/.vim/before.vim', ':p'))
+    source ~/.vim/before.vim
+  endif
 endif
 
 " }}}
@@ -1187,8 +1193,14 @@ packloadall
 " All messages and errors will be ignored.
 silent! helptags ALL
 
-if filereadable(fnamemodify('~/.vim/after.vim', ':p'))
-  source ~/.vim/after.vim
+if has('nvim')
+  if filereadable(fnamemodify('~/.nvim/after.vim', ':p'))
+    source ~/.nvim/after.vim
+  endif
+else
+  if filereadable(fnamemodify('~/.vim/after.vim', ':p'))
+    source ~/.vim/after.vim
+  endif
 endif
 
 " }}}
