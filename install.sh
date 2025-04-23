@@ -2,6 +2,10 @@
 
 set -euf -o pipefail
 set -o xtrace
+
+# Neovim
 mkdir -p ~/.config/nvim/
-cp vimrc ~/.config/nvim/init.vim
-cp vimrc ~/.vimrc
+cp efficient-vim-config.vim ~/.config/nvim/init.vim
+
+# Vim
+cp efficient-vim-config.vim ~/.vimrc
