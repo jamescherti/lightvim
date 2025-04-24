@@ -8,7 +8,7 @@ fi
 
 set -euf -o pipefail
 
-if [[ $EFFICIENT_VIM_CONFIG_UNATTENDED -ne 0 ]]; then
+if [[ $EFFICIENT_VIM_CONFIG_UNATTENDED -eq 0 ]]; then
   read -r -p "Replace ~/.vimrc and ~/.config/nvim/init.vim? [y,n] " ANSWER
   if [[ "$ANSWER" != "y" ]]; then
     echo "Interrupted." >&2
