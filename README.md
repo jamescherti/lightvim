@@ -1,7 +1,7 @@
-# efficient-vim-config - The Efficient Vim/Neovim Configuration
-![License](https://img.shields.io/github/license/jamescherti/efficient-vim-config)
+# minimal-vim-config - The Efficient Vim/Neovim Configuration
+![License](https://img.shields.io/github/license/jamescherti/minimal-vim-config)
 
-The **efficient-vim-config** project is a Vim configuration that is intended to serve as a solid foundation for a Vim configuration.
+The **minimal-vim-config** project is a Vim configuration that is intended to serve as a solid foundation for a Vim configuration.
 
 The author began developing this configuration upon first adopting Vim and has continuously refined it over 25 years of research and testing to identify the most effective parameters and optimizations for a Vim configuration file.
 
@@ -156,4 +156,4 @@ Distributed under terms of the MIT license.
 
 ## Links
 
-- [efficient-vim-config @GitHub](https://github.com/jamescherti/efficient-vim-config)
+- [minimal-vim-config @GitHub](https://github.com/jamescherti/minimal-vim-config)
