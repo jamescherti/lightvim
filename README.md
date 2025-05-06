@@ -7,6 +7,25 @@ The author began developing this configuration upon first adopting Vim and has c
 
 This Vim configuration does not install any plugins. It lets you choose exactly which plugins to use, giving you the freedom to build a setup suited to your specific needs without unnecessary dependencies or bloat.
 
+## Installation
+
+Clone the repository into `~/.minimal-vim-config`:
+
+```
+git clone https://github.com/jamescherti/minimal-vim-config ~/.minimal-vim-config
+```
+
+Create the Neovim directory:
+```
+mkdir -p ~/.config/nvim
+```
+
+Create links to this configuration:
+```
+ln -sf ~/.minimal-vim-config/minimal-vim-config.vim ~/.vimrc
+ln -sf ~/.minimal-vim-config/minimal-vim-config.vim ~/.config/nvim/init.vim
+```
+
 ## Key bindings
 
 - The default `<Leader>`: `,`
