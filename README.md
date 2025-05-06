@@ -26,6 +26,13 @@ ln -sf ~/.minimal-vim-config/minimal-vim-config.vim ~/.vimrc
 ln -sf ~/.minimal-vim-config/minimal-vim-config.vim ~/.config/nvim/init.vim
 ```
 
+## Update minimal-vim-config
+
+To keep your minimal-vim-config configuration up to date, you can pull the latest changes from the repository. Run the following command in your terminal:
+```
+git -C ~/.minimal-vim-config/ pull
+```
+
 ## Key bindings
 
 - The default `<Leader>`: `,`
