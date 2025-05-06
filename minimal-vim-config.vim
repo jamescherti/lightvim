@@ -47,9 +47,9 @@ setglobal fileencodings=utf-8
 scriptencoding utf-8
 
 if has('nvim')
-  let efficient_vim_config_before=fnamemodify(stdpath('config') . '/before.vim', ':p')
-  if filereadable(efficient_vim_config_before)
-    source efficient_vim_config_before
+  let minimal_vim_config_before=fnamemodify(stdpath('config') . '/before.vim', ':p')
+  if filereadable(minimal_vim_config_before)
+    source minimal_vim_config_before
   endif
 else
   if filereadable(fnamemodify('~/.vim/before.vim', ':p'))
@@ -1195,9 +1195,9 @@ packloadall
 silent! helptags ALL
 
 if has('nvim')
-  let efficient_vim_config_after=fnamemodify(stdpath('config') . '/after.vim', ':p')
-  if filereadable(efficient_vim_config_after)
-    source efficient_vim_config_after
+  let minimal_vim_config_after=fnamemodify(stdpath('config') . '/after.vim', ':p')
+  if filereadable(minimal_vim_config_after)
+    source minimal_vim_config_after
   endif
 else
   if filereadable(fnamemodify('~/.vim/after.vim', ':p'))
