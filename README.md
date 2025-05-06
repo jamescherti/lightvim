@@ -187,3 +187,4 @@ Distributed under terms of the MIT license.
 ## Links
 
 - [minimal-vim-config @GitHub](https://github.com/jamescherti/minimal-vim-config)
+- [Announcement: minimal-vim-config – The Efficient Minimal Vim/Neovim Configuration](https://www.jamescherti.com/minimal-vim-neovim-config/)
