@@ -49,7 +49,7 @@ scriptencoding utf-8
 let minimal_vim_config_before =
       \ fnamemodify('~/.minimal-vim-config/before.vim', ':p')
 if filereadable(minimal_vim_config_before)
-  source minimal_vim_config_before
+  execute 'source' minimal_vim_config_before
 endif
 
 
@@ -1193,7 +1193,7 @@ silent! helptags ALL
 let minimal_vim_config_after =
       \ fnamemodify('~/.minimal-vim-config/after.vim', ':p')
 if filereadable(minimal_vim_config_after)
-  source minimal_vim_config_after
+  execute 'source' minimal_vim_config_after
 endif
 
 " }}}
