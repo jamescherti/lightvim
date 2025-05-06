@@ -46,16 +46,12 @@ setglobal encoding=utf-8
 setglobal fileencodings=utf-8
 scriptencoding utf-8
 
-if has('nvim')
-  let minimal_vim_config_before=fnamemodify(stdpath('config') . '/before.vim', ':p')
-  if filereadable(minimal_vim_config_before)
-    source minimal_vim_config_before
-  endif
-else
-  if filereadable(fnamemodify('~/.vim/before.vim', ':p'))
-    source ~/.vim/before.vim
-  endif
+let minimal_vim_config_before =
+      \ fnamemodify('~/.minimal-vim-config/before.vim', ':p')
+if filereadable(minimal_vim_config_before)
+  source minimal_vim_config_before
 endif
+
 
 " }}}
 " Base options {{{
@@ -1194,15 +1190,10 @@ packloadall
 " All messages and errors will be ignored.
 silent! helptags ALL
 
-if has('nvim')
-  let minimal_vim_config_after=fnamemodify(stdpath('config') . '/after.vim', ':p')
-  if filereadable(minimal_vim_config_after)
-    source minimal_vim_config_after
-  endif
-else
-  if filereadable(fnamemodify('~/.vim/after.vim', ':p'))
-    source ~/.vim/after.vim
-  endif
+let minimal_vim_config_after =
+      \ fnamemodify('~/.minimal-vim-config/after.vim', ':p')
+if filereadable(minimal_vim_config_after)
+  source minimal_vim_config_after
 endif
 
 " }}}
