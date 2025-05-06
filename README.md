@@ -15,22 +15,26 @@ Clone the repository into `~/.minimal-vim-config`:
 git clone https://github.com/jamescherti/minimal-vim-config ~/.minimal-vim-config
 ```
 
-Create the Neovim directory:
-```
-mkdir -p ~/.config/nvim
-```
+Create symbolic links for **Vim**:
 
-Create links to this configuration:
 ```
 ln -sf ~/.minimal-vim-config/minimal-vim-config.vim ~/.vimrc
+```
+
+Create symbolic links for **Neovim**:
+
+```
+mkdir -p ~/.config/nvim
 ln -sf ~/.minimal-vim-config/minimal-vim-config.vim ~/.config/nvim/init.vim
 ```
 
-## Updating minimal-vim-config
 
-To keep your minimal-vim-config configuration up to date, you can pull the latest changes from the repository. Run the following command in your terminal:
+## Update
+
+To update *minimal-vim-config* with the latest changes from the repository, execute the following command:
+
 ```
-git -C ~/.minimal-vim-config/ pull
+git -C ~/.minimal-vim-config pull
 ```
 
 ## Key bindings
