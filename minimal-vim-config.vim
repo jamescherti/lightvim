@@ -282,6 +282,7 @@ set noshowmatch
 
 " Backup files
 set nobackup
+set noundofile
 
 set fileformats=unix,dos,mac
 
