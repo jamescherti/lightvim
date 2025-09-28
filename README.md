@@ -1,7 +1,7 @@
-# lightvim - The Efficient Vim/Neovim Configuration
+# Lightvim - The Efficient Vim/Neovim Configuration
 ![License](https://img.shields.io/github/license/jamescherti/lightvim)
 
-The **lightvim** project is a Vim configuration that is intended to serve as a solid foundation for a Vim configuration.
+The [Lightvim](https://www.jamescherti.com/minimal-vim-neovim-config/) project is a Vim configuration that is intended to serve as a solid foundation for a Vim configuration.
 
 The author began developing this configuration upon first adopting Vim and has continuously refined it over 25 years of research and testing to identify the most effective parameters and optimizations for a Vim configuration file.
 
