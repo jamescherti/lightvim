@@ -2,7 +2,7 @@
 " Description: A minimal and optimized Vim/Neovim configuration with
 "              improved defaults and sensible enhancements.
 " Maintainer:  James Cherti
-" URL:         https://github.com/jamescherti/minimal-vim-config
+" URL:         https://github.com/jamescherti/lightvim
 "
 " Licence:     Copyright (C) 2000-2025 James Cherti
 "              Distributed under terms of the MIT license.
@@ -33,10 +33,10 @@ if &compatible
   set nocompatible
 endif
 
-if exists('g:loaded_minimal_vimrc')
+if exists('g:loaded_lightvim')
   finish
 endif
-let g:loaded_minimal_vimrc = 1
+let g:loaded_lightvim = 1
 
 if &compatible || v:version < 600
   finish
@@ -46,10 +46,10 @@ setglobal encoding=utf-8
 setglobal fileencodings=utf-8
 scriptencoding utf-8
 
-let minimal_vim_config_before =
-      \ fnamemodify('~/.minimal-vim-config/before.vim', ':p')
-if filereadable(minimal_vim_config_before)
-  execute 'source' minimal_vim_config_before
+let lightvim_config_before =
+      \ fnamemodify('~/.lightvim/before.vim', ':p')
+if filereadable(lightvim_config_before)
+  execute 'source' lightvim_config_before
 endif
 
 
@@ -1191,10 +1191,10 @@ packloadall
 " All messages and errors will be ignored.
 silent! helptags ALL
 
-let minimal_vim_config_after =
-      \ fnamemodify('~/.minimal-vim-config/after.vim', ':p')
-if filereadable(minimal_vim_config_after)
-  execute 'source' minimal_vim_config_after
+let lightvim_config_after =
+      \ fnamemodify('~/.lightvim/after.vim', ':p')
+if filereadable(lightvim_config_after)
+  execute 'source' lightvim_config_after
 endif
 
 " }}}

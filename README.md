@@ -1,7 +1,7 @@
-# minimal-vim-config - The Efficient Vim/Neovim Configuration
-![License](https://img.shields.io/github/license/jamescherti/minimal-vim-config)
+# lightvim - The Efficient Vim/Neovim Configuration
+![License](https://img.shields.io/github/license/jamescherti/lightvim)
 
-The **minimal-vim-config** project is a Vim configuration that is intended to serve as a solid foundation for a Vim configuration.
+The **lightvim** project is a Vim configuration that is intended to serve as a solid foundation for a Vim configuration.
 
 The author began developing this configuration upon first adopting Vim and has continuously refined it over 25 years of research and testing to identify the most effective parameters and optimizations for a Vim configuration file.
 
@@ -9,32 +9,32 @@ This Vim configuration does not install any plugins. It lets you choose exactly 
 
 ## Installation
 
-Clone the repository into `~/.minimal-vim-config`:
+Clone the repository into `~/.lightvim`:
 
 ```
-git clone https://github.com/jamescherti/minimal-vim-config ~/.minimal-vim-config
+git clone https://github.com/jamescherti/lightvim ~/.lightvim
 ```
 
 Create symbolic links for **Vim**:
 
 ```
-ln -sf ~/.minimal-vim-config/minimal-vim-config.vim ~/.vimrc
+ln -sf ~/.lightvim/lightvim.vim ~/.vimrc
 ```
 
 Create symbolic links for **Neovim**:
 
 ```
 mkdir -p ~/.config/nvim
-ln -sf ~/.minimal-vim-config/minimal-vim-config.vim ~/.config/nvim/init.vim
+ln -sf ~/.lightvim/lightvim.vim ~/.config/nvim/init.vim
 ```
 
 
 ## Update
 
-To update *minimal-vim-config* with the latest changes from the repository, execute the following command:
+To update *lightvim* with the latest changes from the repository, execute the following command:
 
 ```
-git -C ~/.minimal-vim-config pull
+git -C ~/.lightvim pull
 ```
 
 ## Key bindings
@@ -186,5 +186,5 @@ Distributed under terms of the MIT license.
 
 ## Links
 
-- [minimal-vim-config @GitHub](https://github.com/jamescherti/minimal-vim-config)
-- [Announcement: minimal-vim-config – The Efficient Minimal Vim/Neovim Configuration](https://www.jamescherti.com/minimal-vim-neovim-config/)
+- [lightvim @GitHub](https://github.com/jamescherti/lightvim)
+- [Announcement: Lightvim – The Efficient Vim/Neovim Configuration](https://www.jamescherti.com/minimal-vim-neovim-config/)
