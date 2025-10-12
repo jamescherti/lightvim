@@ -282,7 +282,6 @@ set noshowmatch
 
 " Backup files
 set nobackup
-set noundofile
 
 set fileformats=unix,dos,mac
 
@@ -291,7 +290,7 @@ set tabpagemax=30
 set history=400
 set undolevels=2000
 set undoreload=10000
-set undofile
+set noundofile
 
 " Show @@@ in the last line if it is truncated.
 set display=truncate
