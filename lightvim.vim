@@ -304,20 +304,20 @@ if !isdirectory(g:lightvim_undodir)
   call mkdir(g:lightvim_undodir, 'p')
 endif
 set undofile
-execute 'set ' . undodir . '=' . g:lightvim_undodir
+execute 'set undodir=' . g:lightvim_undodir
 
 " Backup files
 if !isdirectory(g:lightvim_backupdir)
   call mkdir(g:lightvim_backupdir, 'p')
 endif
 set backup
-execute 'set ' . backupdir . '=' . g:lightvim_backupdir
+execute 'set backupdir=' . g:lightvim_backupdir
 
 " Swap files
 if !isdirectory(g:lightvim_swapdir)
   call mkdir(g:lightvim_swapdir, 'p')
 endif
-execute 'set ' . directory . '=' . g:lightvim_swapdir
+execute 'set directory=' . g:lightvim_swapdir
 
 " Show @@@ in the last line if it is truncated.
 set display=truncate
