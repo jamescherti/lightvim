@@ -46,15 +46,16 @@ setglobal encoding=utf-8
 setglobal fileencodings=utf-8
 scriptencoding utf-8
 
-let g:lightvim_dir = fnamemodify('~/.lightvim.d', ':p')
-let g:lightvim_var_dir = fnamemodify(g:lightvim_dir . '/var', ':p')
+let g:lightvim_dir = fnamemodify('~/.lightvim.d', ':p:h')
+let g:lightvim_var_dir = fnamemodify(g:lightvim_dir . '/var', ':p:h')
 
-let g:lightvim_config_before = g:lightvim_dir . '/before.vim'
-let g:lightvim_config_after = g:lightvim_dir . '/after.vim'
+let g:lightvim_config_before = fnamemodify(g:lightvim_dir . '/before.vim', ':p:h')
+let g:lightvim_config_after  = fnamemodify(g:lightvim_dir . '/after.vim', ':p:h')
 
-let g:lightvim_undodir = g:lightvim_var_dir . '/undo'
-let g:lightvim_backupdir = g:lightvim_var_dir . '/backup'
-let g:lightvim_swapdir = g:lightvim_var_dir . '/swap'
+let g:lightvim_undodir   = fnamemodify(g:lightvim_var_dir . '/undo', ':p:h')
+let g:lightvim_backupdir = fnamemodify(g:lightvim_var_dir . '/backup', ':p:h')
+let g:lightvim_swapdir   = fnamemodify(g:lightvim_var_dir . '/swap', ':p:h')
+let g:lightvim_spell     = fnamemodify(g:lightvim_var_dir . '/spell', ':p:h')
 
 if filereadable(g:lightvim_config_before)
   execute 'source' g:lightvim_config_before
@@ -526,7 +527,16 @@ endif
 " Language {{{
 
 set spellsuggest=best
-set spellfile=$HOME/.vim-spell.en.utf8.add
+if !isdirectory(g:lightvim_spell)
+  call mkdir(g:lightvim_spell, 'p')
+endif
+set undofile
+
+if exists('&spellfile')
+  let &spellfile = fnamemodify(
+        \ g:lightvim_spell . '/' . &spelllang . '.' . &encoding . '.add',
+        \ ':p')
+endif
 
 " List of files to be searched when you press <C-P><C-N> (comma separated)
 set dictionary=~/.vim/dict/english_words

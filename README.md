@@ -102,6 +102,32 @@ Normal mode:
 - Run MRU (requires mru.vim): `<Leader>m` or `<Leader>b`
 - Run fzf (requires fzf.vim): `C-p`
 
+## Paths
+
+### Lightvim Directory Structure
+
+Lightvim isolates all configuration, cache, and runtime data under its own directory tree, independent from the default `~/.vim` structure. This ensures a clean, self-contained Vim environment.
+
+### Configuration Files
+
+* **`~/.lightvim.d/before.vim`**: Executed before the main configuration is loaded. Used for early initialization or plugin path setup.
+
+* **`~/.lightvim.d/after.vim`**: Executed after all configuration and plugins have been loaded. Used for post-configuration customization.
+
+### Runtime Data Directories
+
+* **`~/.lightvim.d/var/undo/`**: Stores persistent undo history files.
+
+* **`~/.lightvim.d/var/backup/`**: Stores backup files created before saving modifications.
+
+* **`~/.lightvim.d/var/swap/`**: Stores swap files for open buffers.
+
+* **`~/.lightvim.d/var/spell/`**: Stores custom spell dictionaries. Each file is created dynamically according to the active language and encoding.
+
+### Runtime and Package Paths
+
+Lightvim adds its root directory to both `runtimepath` and `packpath` so that all plugins, syntax files, and configuration scripts are discovered exclusively from the Lightvim directory tree `~/.lightvim.d/`.
+
 ## Features
 
 This vimrc enhances defaults that improve the editing experience with Vim, based on extensive research and testing.
