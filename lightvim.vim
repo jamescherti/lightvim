@@ -46,15 +46,26 @@ setglobal encoding=utf-8
 setglobal fileencodings=utf-8
 scriptencoding utf-8
 
-let lightvim_config_before =
-      \ fnamemodify('~/.lightvim/before.vim', ':p')
-if filereadable(lightvim_config_before)
-  execute 'source' lightvim_config_before
-endif
+let g:lightvim_dir = fnamemodify('~/.lightvim.d', ':p')
+let g:lightvim_var_dir = fnamemodify(g:lightvim_dir . '/var', ':p')
 
+let g:lightvim_config_before = g:lightvim_dir . '/before.vim'
+let g:lightvim_config_after = g:lightvim_dir . '/after.vim'
+
+let g:lightvim_undodir = g:lightvim_var_dir . '/undo'
+let g:lightvim_backupdir = g:lightvim_var_dir . '/backup'
+let g:lightvim_swapdir = g:lightvim_var_dir . '/swap'
+
+if filereadable(g:lightvim_config_before)
+  execute 'source' g:lightvim_config_before
+endif
 
 " }}}
 " Base options {{{
+
+" Runtime path
+set runtimepath^=g:lightvim_dir
+set packpath^=g:lightvim_dir
 
 let g:font_default_name = get(g:, 'font_default_name', "DejaVu Sans Mono")
 let g:font_default_size = get(g:, 'font_default_size', 14)
@@ -281,16 +292,34 @@ set suffixes+=.a,.o,.pyc,.pyo
 set noshowmatch
 
 " Backup files
-set nobackup
-
 set fileformats=unix,dos,mac
 
 " History and undo
 set tabpagemax=30
 set history=400
+
 set undolevels=2000
 set undoreload=10000
-set noundofile
+
+" Undo files
+if !isdirectory(g:lightvim_undodir)
+  call mkdir(g:lightvim_undodir, 'p')
+endif
+set undofile
+set undodir^=g:lightvim_undodir
+
+" Backup files
+if !isdirectory(g:lightvim_backupdir)
+  call mkdir(g:lightvim_backupdir, 'p')
+endif
+set backup
+set backupdir^=g:lightvim_backupdir
+
+" Swap files
+if !isdirectory(g:lightvim_swapdir)
+  call mkdir(g:lightvim_swapdir, 'p')
+endif
+set directory^=g:lightvim_swapdir
 
 " Show @@@ in the last line if it is truncated.
 set display=truncate
@@ -1190,10 +1219,8 @@ packloadall
 " All messages and errors will be ignored.
 silent! helptags ALL
 
-let lightvim_config_after =
-      \ fnamemodify('~/.lightvim/after.vim', ':p')
-if filereadable(lightvim_config_after)
-  execute 'source' lightvim_config_after
+if filereadable(g:lightvim_config_after)
+  execute 'source' g:lightvim_config_after
 endif
 
 " }}}
