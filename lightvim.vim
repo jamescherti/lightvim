@@ -63,6 +63,9 @@ endif
 " }}}
 " Base options {{{
 
+execute 'set runtimepath+=' . g:lightvim_dir
+execute 'set packpath+=' . g:lightvim_dir
+
 " Runtime path
 
 let g:font_default_name = get(g:, 'font_default_name', "DejaVu Sans Mono")
