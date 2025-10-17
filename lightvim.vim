@@ -64,8 +64,6 @@ endif
 " Base options {{{
 
 " Runtime path
-set runtimepath^=g:lightvim_dir
-set packpath^=g:lightvim_dir
 
 let g:font_default_name = get(g:, 'font_default_name', "DejaVu Sans Mono")
 let g:font_default_size = get(g:, 'font_default_size', 14)
@@ -306,20 +304,20 @@ if !isdirectory(g:lightvim_undodir)
   call mkdir(g:lightvim_undodir, 'p')
 endif
 set undofile
-set undodir^=g:lightvim_undodir
+execute 'set ' . undodir . '=' . g:lightvim_undodir
 
 " Backup files
 if !isdirectory(g:lightvim_backupdir)
   call mkdir(g:lightvim_backupdir, 'p')
 endif
 set backup
-set backupdir^=g:lightvim_backupdir
+execute 'set ' . backupdir . '=' . g:lightvim_backupdir
 
 " Swap files
 if !isdirectory(g:lightvim_swapdir)
   call mkdir(g:lightvim_swapdir, 'p')
 endif
-set directory^=g:lightvim_swapdir
+execute 'set ' . directory . '=' . g:lightvim_swapdir
 
 " Show @@@ in the last line if it is truncated.
 set display=truncate
