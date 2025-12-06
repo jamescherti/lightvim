@@ -46,16 +46,16 @@ setglobal encoding=utf-8
 setglobal fileencodings=utf-8
 scriptencoding utf-8
 
-let g:lightvim_dir = fnamemodify('~/.lightvim.d', ':p:h')
-let g:lightvim_var_dir = fnamemodify(g:lightvim_dir . '/var', ':p:h')
+let g:lightvim_dir = fnamemodify('~/.lightvim.d', ':p')
+let g:lightvim_var_dir = fnamemodify(g:lightvim_dir . '/var', ':p')
 
-let g:lightvim_config_before = fnamemodify(g:lightvim_dir . '/before.vim', ':p:h')
-let g:lightvim_config_after  = fnamemodify(g:lightvim_dir . '/after.vim', ':p:h')
+let g:lightvim_config_before = fnamemodify(g:lightvim_dir . '/before.vim', ':p')
+let g:lightvim_config_after  = fnamemodify(g:lightvim_dir . '/after.vim', ':p')
 
-let g:lightvim_undodir   = fnamemodify(g:lightvim_var_dir . '/undo', ':p:h')
-let g:lightvim_backupdir = fnamemodify(g:lightvim_var_dir . '/backup', ':p:h')
-let g:lightvim_swapdir   = fnamemodify(g:lightvim_var_dir . '/swap', ':p:h')
-let g:lightvim_spell     = fnamemodify(g:lightvim_var_dir . '/spell', ':p:h')
+let g:lightvim_undodir   = fnamemodify(g:lightvim_var_dir . '/undo', ':p')
+let g:lightvim_backupdir = fnamemodify(g:lightvim_var_dir . '/backup', ':p')
+let g:lightvim_swapdir   = fnamemodify(g:lightvim_var_dir . '/swap', ':p')
+let g:lightvim_spell     = fnamemodify(g:lightvim_var_dir . '/spell', ':p')
 
 if filereadable(g:lightvim_config_before)
   execute 'source' g:lightvim_config_before
