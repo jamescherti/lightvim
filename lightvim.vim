@@ -339,8 +339,7 @@ set display=truncate
 " from the ":cn" command.
 set shortmess+=mrcFIwxst
 
-set number
-set relativenumber
+" set relativenumber
 
 " Disable beeping
 set noerrorbells
