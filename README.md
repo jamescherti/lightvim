@@ -206,7 +206,7 @@ This vimrc enhances defaults that improve the editing experience with Vim, based
 
 ## Author and license
 
-Copyright (C) 2000-2025 [James Cherti](https://www.jamescherti.com).
+Copyright (C) 2000-2026 [James Cherti](https://www.jamescherti.com).
 
 Distributed under terms of the MIT license.
 
