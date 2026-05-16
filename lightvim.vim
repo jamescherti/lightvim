@@ -849,11 +849,10 @@ vnoremap <silent> <C-s> <cmd>call <SID>smart_write('', 0)<CR>
 
 nnoremap <leader>t :tab split<CR>
 
-inoremap <C-S-k> :tabmove -1<CR>
 nnoremap <C-S-k> :tabmove -1<CR>
-vnoremap <C-S-k> :tabmove -1<CR>
-inoremap <C-S-j> :tabmove 1<CR>
 nnoremap <C-S-j> :tabmove 1<CR>
+
+vnoremap <C-S-k> :tabmove -1<CR>
 vnoremap <C-S-j> :tabmove 1<CR>
 
 " Tab next / Tab previous
