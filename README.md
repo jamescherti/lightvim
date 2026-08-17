@@ -44,6 +44,7 @@ git -C ~/.lightvim pull
 ### Miscellaneous
 
 Normal mode:
+
 - Toggle wrap: `<Leader>wr`
 - Previous buffer: `A-o`
 - Next buffer: `A-i`
@@ -53,52 +54,63 @@ Normal mode:
 - Search backward using the current word: `#`
 
 Visual mode:
+
 - Search forward for the current selection: `//` or `*`
 - Search backward for the current selection: `#`
 
 Visual, normal, and insert mode:
+
 - Redraw the screen and clears search highlights: `<C-l>`
 
 ### Clipboard:
 
 Normal mode:
+
 - Select pasted text: `gp`
 
 Visual mode:
+
 - Copy: `C-c`
 - Cut: `C-x`
 
 Insert mode:
+
 - Paste: `C-v`
 
 ### Files:
 
 Grep:
+
 - Run grep (or rg, if available): `<leader>gr` (normal mode)
 
 ### Tabs
 
 Normal mode:
+
 - Create a tab: `<Leader>t`
 
 Insert mode, visual mode, and normal mode:
+
 - Previous tab: `C-k`
 - Next tab: `C-j`
 - Move tab to the left: `<C-S-K>`
 - Move tab to the right: `<C-S-J>`
 
 Visual and normal mode:
+
 - Close window/split (or tab if there is one window in the current tab): `C-w c`
 
 ### GUI
 
 Normal and insert mode:
+
 - Increase font size: `Ctrl` + `+` (or `Ctrl` + Mouse Wheel Up)
 - Decrease font size: `Ctrl` + `-` (or `Ctrl` + Mouse Wheel Down)
 
 ### External plugins
 
 Normal mode:
+
 - Run MRU (requires mru.vim): `<Leader>m` or `<Leader>b`
 - Run fzf (requires fzf.vim): `C-p`
 
